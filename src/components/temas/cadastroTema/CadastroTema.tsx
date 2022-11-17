@@ -3,18 +3,22 @@ import { Container, Typography, TextField, Button } from "@material-ui/core"
 import Tema from '../../../models/Tema';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { buscaId, post, put } from '../../../services/Service';
-import useLocalStorage from 'react-use-localstorage';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 
 function CadastroTema() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [token, setToken] = useLocalStorage('token');
     const [temas, setTemas] = useState<Tema>({
         id: 0,
         descricao: ''
     })
+
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
 
     useEffect(() => {
         if (token == "") {
@@ -39,7 +43,7 @@ function CadastroTema() {
     }, [id])
 
     async function findById(id: string) {
-        buscaId(`/tema/${id}`, setTemas, {
+        buscaId(`/temas/${id}`, setTemas, {
             headers: {
                 'Authorization': token
             }
