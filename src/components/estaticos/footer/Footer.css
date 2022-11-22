@@ -1,19 +1,24 @@
-.box1{
+.box1 {
     background-color: #5F3534;
     height: 120px;
 }
 
-.box2{
+.box2 {
     background-color: #5F3534;
-    height: 60px 
+    height: 60px
 }
 
-.redes{
+.redes {
     font-size: 40px !important;
     color: white;
 }
 
-.textos{
-  color: white;
+.textos {
+    color: white;
+
 }
 
+.linkgen {
+    text-decoration: none;
+
+}
